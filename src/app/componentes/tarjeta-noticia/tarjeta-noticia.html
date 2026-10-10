@@ -1,0 +1,19 @@
+<article class="tarjeta">
+  <img [src]="noticia().imagen" [alt]="noticia().titulo">
+  <div class="tarjeta-contenido">
+    <span>{{ noticia().categoria }}</span>
+    <h3>{{ noticia().titulo }}</h3>
+    <p class="resumen-tarjeta">{{ noticia().resumen }}</p>
+    <div class="tarjeta-acciones">
+      <span class="fecha-tarjeta">{{ noticia().fecha }}</span>
+      <div>
+        <button type="button" (click)="servicioNoticias.alternarFavorito(noticia().id)"
+          [attr.aria-pressed]="servicioNoticias.esFavorita(noticia().id)"
+          [attr.aria-label]="(servicioNoticias.esFavorita(noticia().id) ? 'Quitar de favoritos: ' : 'Agregar a favoritos: ') + noticia().titulo">
+          {{ servicioNoticias.esFavorita(noticia().id) ? '♥' : '♡' }}
+        </button>
+        <a [routerLink]="['/noticias', noticia().id]">Ver más</a>
+      </div>
+    </div>
+  </div>
+</article>

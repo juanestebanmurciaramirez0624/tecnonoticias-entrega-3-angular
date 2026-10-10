@@ -1,12 +1,12 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Encabezado } from './componentes/encabezado/encabezado';
+import { PiePagina } from './componentes/pie-pagina/pie-pagina';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Encabezado, PiePagina],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
 })
-export class App {
-  protected readonly title = signal('tecnonoticias');
-}
+export class App {}

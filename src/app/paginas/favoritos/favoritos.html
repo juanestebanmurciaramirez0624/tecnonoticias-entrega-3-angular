@@ -1,0 +1,22 @@
+<main class="seccion contenedor">
+  <h1>Mis favoritos</h1>
+  <p>Noticias que guardaste para leer después.</p>
+  <div class="lista-noticias">
+    @for (noticia of favoritosPagina(); track noticia.id) {
+      <app-tarjeta-noticia [noticia]="noticia" />
+    } @empty {
+      <div class="estado-vacio"><h2>Aún no tienes favoritos</h2><p>Toca el ♡ de cualquier noticia para guardarla.</p><a class="boton" routerLink="/noticias">Explorar noticias</a></div>
+    }
+  </div>
+  @if (servicioNoticias.noticiasFavoritas().length > noticiasPorPagina) {
+    <nav class="paginacion" aria-label="Paginación de favoritos">
+      <button type="button" (click)="cambiarPagina(paginaValida() - 1)" [disabled]="paginaValida() === 1">Anterior</button>
+      @for (pagina of paginas(); track pagina) {
+        <button type="button" [class.activo]="paginaValida() === pagina"
+          [attr.aria-current]="paginaValida() === pagina ? 'page' : null"
+          (click)="cambiarPagina(pagina)">{{ pagina }}</button>
+      }
+      <button type="button" (click)="cambiarPagina(paginaValida() + 1)" [disabled]="paginaValida() === totalPaginas()">Siguiente</button>
+    </nav>
+  }
+</main>

@@ -1,0 +1,26 @@
+<main class="seccion contenedor">
+  @if (noticia(); as noticiaActual) {
+    <nav class="miga-pan" aria-label="Ruta de navegación"><a routerLink="/">Inicio</a> / <a routerLink="/noticias">Noticias</a> / <span>{{ noticiaActual.titulo }}</span></nav>
+    <div class="datos-detalle"><span class="categoria">{{ noticiaActual.categoria }}</span><span>{{ noticiaActual.fecha }}</span></div>
+    <div class="cabecera-detalle">
+      <div><h1>{{ noticiaActual.titulo }}</h1><p>Por {{ noticiaActual.autor }} · {{ minutosLectura(noticiaActual.contenido) }} min de lectura</p></div>
+      <div class="acciones-detalle">
+        <button class="boton boton-borde" type="button" (click)="servicioNoticias.alternarFavorito(noticiaActual.id)">{{ servicioNoticias.esFavorita(noticiaActual.id) ? '♥ Quitar de favoritos' : '♡ Agregar a favoritos' }}</button>
+        <button class="boton" type="button" (click)="compartir()">{{ textoCompartir() }}</button>
+      </div>
+    </div>
+    <div class="columnas-detalle">
+      <article class="contenido-detalle">
+        <img class="imagen-detalle" [src]="noticiaActual.imagen" [alt]="noticiaActual.titulo">
+        <p>{{ noticiaActual.contenido }}</p><blockquote>{{ noticiaActual.resumen }}</blockquote>
+      </article>
+      <aside class="relacionadas"><h2>Noticias relacionadas</h2>
+        @for (relacionada of relacionadas(); track relacionada.id) {
+          <article class="noticia-relacionada"><img [src]="relacionada.imagen" [alt]="relacionada.titulo"><div><h3>{{ relacionada.titulo }}</h3><a [routerLink]="['/noticias', relacionada.id]">Ver noticia</a></div></article>
+        }
+      </aside>
+    </div>
+  } @else {
+    <div class="estado-vacio"><h1>Noticia no encontrada</h1><p>La noticia que buscas no existe.</p><a class="boton" routerLink="/noticias">Ver todas las noticias</a></div>
+  }
+</main>

@@ -1,59 +1,125 @@
-# Tecnonoticias
+# TecnoNoticias — Entrega 3
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.7.
+Aplicación web de noticias desarrollada con Angular como proyecto final del módulo de Front End. Esta versión migra a Angular el prototipo creado previamente con HTML, CSS y JavaScript.
 
-## Development server
+## Funcionalidades
 
-To start a local development server, run:
+- Página de inicio con las tres noticias destacadas más recientes.
+- Listado dinámico de noticias cargadas desde JSON y `localStorage`.
+- Búsqueda por título, resumen o categoría y filtros por categoría.
+- Paginación de noticias y favoritos, con nueve tarjetas por página.
+- Vista detallada de cada noticia y noticias relacionadas.
+- Gestión de favoritos mediante `localStorage` y contador en el encabezado.
+- Formulario de contacto reactivo con validaciones, mensajes de error y envío mediante FormSubmit.
+- Administración local para crear, editar y eliminar noticias.
+- Validación de los datos del formulario de administración y confirmación antes de eliminar.
+- Carga, validación y compresión de imágenes JPG, PNG o WEBP.
+- Selección de noticias destacadas desde el formulario de administración.
+- Tarjetas uniformes con límite visual de líneas para evitar que se descuadre el diseño.
+- Navegación SPA mediante Angular Router.
+- Diseño adaptable a computadores, tabletas y celulares.
 
-```bash
-ng serve
+## Tecnologías utilizadas
+
+- Angular
+- TypeScript
+- HTML
+- CSS
+- Angular Router
+- Formularios reactivos de Angular
+- Signals
+- JSON local
+- `localStorage`
+
+## Estructura principal
+
+```text
+src/
+├── app/
+│   ├── componentes/
+│   │   ├── encabezado/
+│   │   ├── pie-pagina/
+│   │   └── tarjeta-noticia/
+│   ├── modelos/
+│   │   └── noticia.ts
+│   ├── paginas/
+│   │   ├── administrar/
+│   │   ├── contacto/
+│   │   ├── detalle/
+│   │   ├── favoritos/
+│   │   ├── inicio/
+│   │   └── noticias/
+│   ├── servicios/
+│   │   └── noticias.ts
+│   ├── app.routes.ts
+│   └── app.ts
+├── index.html
+├── main.ts
+└── styles.css
+
+public/
+├── assets/images/
+├── data/noticias.json
+└── favicon.svg
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Requisitos
 
-## Code scaffolding
+- Node.js compatible con Angular 22.
+- npm.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Instalación
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Después de clonar el repositorio, instala las dependencias:
 
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
+## Ejecución local
 
-To build the project run:
+Inicia el servidor de desarrollo:
 
 ```bash
-ng build
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Abre `http://localhost:4200` en el navegador. La aplicación se actualizará automáticamente al modificar el código fuente.
 
-## Running unit tests
+## Compilación
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Genera la versión optimizada:
 
 ```bash
-ng test
+npm run build
 ```
 
-## Running end-to-end tests
+Los archivos compilados se guardan en `dist/tecnonoticias/browser`.
 
-For end-to-end (e2e) testing, run:
+## Rutas de la aplicación
 
-```bash
-ng e2e
-```
+- `/`: página de inicio.
+- `/noticias`: listado y búsqueda de noticias.
+- `/noticias/:id`: detalle de una noticia.
+- `/favoritos`: noticias guardadas por el usuario.
+- `/administrar`: gestión local de noticias.
+- `/contacto`: formulario e información de contacto.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Almacenamiento local
 
-## Additional Resources
+Las noticias creadas y los identificadores de las noticias favoritas se guardan en el navegador mediante `localStorage`. Por esta razón la información puede variar entre navegadores o dispositivos y se pierde si se borran los datos del sitio.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Formulario de contacto
+
+El formulario valida todos los campos antes de enviarlos, los mensajes se reciben mediante el servicio gratuito FormSubmit, por lo que el proyecto no necesita almacenar contraseñas ni credenciales privadas en el código fuente. La primera vez que se configura una dirección de correo, FormSubmit puede solicitar su confirmación.
+
+## Despliegue
+
+La aplicación se despliega en GitHub Pages.
+
+- URL del repositorio: https://github.com/juanestebanmurciaramirez0624/tecnonoticias-entrega-3-angular
+- URL de la aplicación desplegada: https://juanestebanmurciaramirez0624.github.io/tecnonoticias-entrega-3-angular/
+
+## Proyecto académico
+
+Entrega 3 del módulo Desarrollo de Front End. La aplicación evidencia el uso de componentes reutilizables, rutas, formularios reactivos, servicios, y persistencia local en Angular.

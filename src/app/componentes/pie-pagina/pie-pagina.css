@@ -1,0 +1,21 @@
+footer {
+  margin-top: 35px;
+  padding: 24px 0;
+  color: var(--blanco);
+  background: var(--azul);
+}
+
+.pie {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 14px;
+}
+
+@media (max-width: 750px) {
+  .pie {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}

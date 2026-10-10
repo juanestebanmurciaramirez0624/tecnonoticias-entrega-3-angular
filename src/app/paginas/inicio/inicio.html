@@ -1,0 +1,22 @@
+<section class="portada">
+  <div class="contenedor portada-flex">
+    <div class="portada-texto">
+      <span class="etiqueta-portada">TECNOLOGÍA QUE TRANSFORMA</span>
+      <h1>El futuro empieza con una buena historia</h1>
+      <p>Noticias claras sobre innovación, educación digital y tendencias.</p>
+      <a class="boton" routerLink="/noticias">Explorar noticias</a>
+      <a class="boton claro" routerLink="/contacto">Contáctanos</a>
+    </div>
+    <img class="portada-imagen" src="assets/images/index.jpg" alt="Tecnología y educación">
+  </div>
+</section>
+
+<section class="seccion contenedor">
+  <h2>Noticias destacadas</h2>
+  <p>Una selección para entender lo que viene.</p>
+  <div class="lista-noticias">
+    @for (noticia of destacadas(); track noticia.id) {
+      <app-tarjeta-noticia [noticia]="noticia" />
+    }
+  </div>
+</section>

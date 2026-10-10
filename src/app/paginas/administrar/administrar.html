@@ -1,0 +1,105 @@
+<main class="seccion contenedor">
+  <div class="titulo-admin">
+    <div>
+      <span class="etiqueta-admin">PANEL DE CONTENIDO</span>
+      <h1>Administrar noticias</h1>
+      <p>Crea, edita y elimina noticias guardadas en este navegador.</p>
+    </div>
+    <a class="boton claro-admin" routerLink="/noticias">Ver noticias</a>
+  </div>
+
+  <div class="administracion">
+    <form class="panel-admin" [formGroup]="formulario" (ngSubmit)="guardar()" novalidate>
+      <h2>{{ editando ? 'Editar noticia' : 'Nueva noticia' }}</h2>
+
+      <label for="titulo">Título</label>
+      <input id="titulo" formControlName="titulo" maxlength="120"
+        [class.campo-invalido]="mostrarError('titulo')" [attr.aria-invalid]="mostrarError('titulo')">
+      @if (mostrarError('titulo')) {
+        <small class="error-campo">El título debe tener entre 5 y 120 caracteres.</small>
+      }
+
+      <label for="autor">Autor</label>
+      <input id="autor" formControlName="autor" maxlength="60" autocomplete="name"
+        [class.campo-invalido]="mostrarError('autor')" [attr.aria-invalid]="mostrarError('autor')">
+      @if (mostrarError('autor')) {
+        <small class="error-campo">Escribe un nombre válido de entre 3 y 60 caracteres.</small>
+      }
+
+      <label for="categoria">Categoría</label>
+      <select id="categoria" formControlName="categoria">
+        <option>Tecnología</option>
+        <option>Educación</option>
+        <option>Innovación</option>
+        <option>Tendencias</option>
+      </select>
+
+      <label for="resumen">Resumen</label>
+      <textarea id="resumen" formControlName="resumen" maxlength="300"
+        [class.campo-invalido]="mostrarError('resumen')" [attr.aria-invalid]="mostrarError('resumen')"></textarea>
+      <div class="ayuda-campo">
+        @if (mostrarError('resumen')) {
+          <small class="error-campo">El resumen debe tener entre 20 y 300 caracteres.</small>
+        }
+        <small class="contador-caracteres">{{ formulario.controls.resumen.value.length }} / 300</small>
+      </div>
+
+      <label for="contenido">Contenido</label>
+      <textarea class="contenido-noticia" id="contenido" formControlName="contenido" maxlength="3000"
+        [class.campo-invalido]="mostrarError('contenido')" [attr.aria-invalid]="mostrarError('contenido')"></textarea>
+      <div class="ayuda-campo">
+        @if (mostrarError('contenido')) {
+          <small class="error-campo">El contenido debe tener entre 50 y 3000 caracteres.</small>
+        }
+        <small class="contador-caracteres">{{ formulario.controls.contenido.value.length }} / 3000</small>
+      </div>
+
+      <label for="imagen">Imagen</label>
+      <input id="imagen" type="file" accept="image/jpeg,image/png,image/webp" (change)="seleccionarImagen($event)"
+        [class.campo-invalido]="errorImagen">
+      <span class="ayuda-imagen">JPG, PNG o WEBP de máximo 5 MB. La imagen se optimiza antes de guardarse.</span>
+      @if (errorImagen) { <small class="error-campo">{{ errorImagen }}</small> }
+      @if (procesandoImagen) { <p>Procesando imagen...</p> }
+      @if (imagen) { <img class="vista-previa" [src]="imagen" alt="Vista previa de la noticia"> }
+
+      <label class="opcion-destacada">
+        <input formControlName="destacada" type="checkbox">
+        Mostrar en noticias destacadas
+      </label>
+
+      <div class="botones-formulario">
+        <button class="boton" type="submit" [disabled]="procesandoImagen">
+          {{ editando ? 'Guardar cambios' : 'Guardar noticia' }}
+        </button>
+        @if (editando) {
+          <button class="boton boton-borde" type="button" (click)="cancelar()">Cancelar</button>
+        }
+      </div>
+      @if (mensaje) {
+        <p role="status" [class.correcto]="mensajeCorrecto" [class.error]="!mensajeCorrecto">{{ mensaje }}</p>
+      }
+    </form>
+
+    <section class="panel-admin lista-admin">
+      <div class="titulo-lista">
+        <div><span class="etiqueta-lista">PUBLICACIONES LOCALES</span><h2>Noticias creadas</h2></div>
+        <span class="contador-admin">MINI CRUD · {{ creadas().length }}</span>
+      </div>
+      @for (noticia of creadas(); track noticia.id) {
+        <div class="noticia-admin">
+          <img [src]="noticia.imagen" [alt]="noticia.titulo">
+          <div class="info-admin">
+            <span>{{ noticia.titulo }}</span>
+            <small>{{ noticia.categoria }} · {{ noticia.fecha }}{{ noticia.destacada ? ' · ★ Destacada' : '' }}</small>
+          </div>
+          <div class="acciones-admin">
+            <button class="editar" type="button" (click)="editar(noticia)">Editar</button>
+            <button class="eliminar" type="button" (click)="eliminar(noticia)">Eliminar</button>
+          </div>
+        </div>
+      } @empty {
+        <p>No has creado noticias todavía.</p>
+      }
+    </section>
+  </div>
+</main>

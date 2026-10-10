@@ -1,0 +1,20 @@
+<header class="encabezado">
+  <div class="contenedor barra">
+    <a class="logo" routerLink="/" aria-label="Ir al inicio de TecnoNoticias">
+      <span>T</span>TecnoNoticias
+    </a>
+
+    <nav aria-label="Navegación principal">
+      <a routerLink="/" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      <a routerLink="/noticias" routerLinkActive="activo">Noticias</a>
+      <a routerLink="/favoritos" routerLinkActive="activo">
+        Favoritos
+        @if (servicioNoticias.noticiasFavoritas().length) {
+          <span class="contador-favoritos" aria-label="Noticias favoritas">{{ servicioNoticias.noticiasFavoritas().length }}</span>
+        }
+      </a>
+      <a routerLink="/administrar" routerLinkActive="activo">Administrar</a>
+      <a routerLink="/contacto" routerLinkActive="activo">Contacto</a>
+    </nav>
+  </div>
+</header>

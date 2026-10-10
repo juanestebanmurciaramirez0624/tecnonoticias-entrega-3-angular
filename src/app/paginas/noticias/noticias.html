@@ -1,0 +1,34 @@
+<main class="seccion contenedor">
+  <div class="cabecera-listado">
+    <div><h1>Últimas noticias</h1><p>Explora historias, ideas y avances recientes</p></div>
+    <input type="search" placeholder="Buscar noticias..." aria-label="Buscar noticias"
+      [ngModel]="busqueda()" (ngModelChange)="actualizarBusqueda($event)">
+  </div>
+  <div class="filtros" role="group" aria-label="Filtrar por categoría">
+    @for (opcion of categorias; track opcion) {
+      <button type="button" class="filtro" [class.activo]="categoria() === opcion"
+        [attr.aria-pressed]="categoria() === opcion" (click)="cambiarCategoria(opcion)">{{ opcion }}</button>
+    }
+  </div>
+  @if (busqueda() || categoria() !== 'Todas') {
+    <p class="resultado-busqueda">{{ noticiasFiltradas().length }} noticias encontradas</p>
+  }
+  <div class="lista-noticias">
+    @for (noticia of noticiasPagina(); track noticia.id) {
+      <app-tarjeta-noticia [noticia]="noticia" />
+    } @empty {
+      <div class="estado-vacio"><h2>No encontramos noticias</h2><p>Prueba con otras palabras o categoría.</p></div>
+    }
+  </div>
+  @if (noticiasFiltradas().length > noticiasPorPagina) {
+    <nav class="paginacion" aria-label="Paginación de noticias">
+      <button type="button" (click)="cambiarPagina(paginaValida() - 1)" [disabled]="paginaValida() === 1">Anterior</button>
+      @for (pagina of paginas(); track pagina) {
+        <button type="button" [class.activo]="paginaValida() === pagina"
+          [attr.aria-current]="paginaValida() === pagina ? 'page' : null"
+          (click)="cambiarPagina(pagina)">{{ pagina }}</button>
+      }
+      <button type="button" (click)="cambiarPagina(paginaValida() + 1)" [disabled]="paginaValida() === totalPaginas()">Siguiente</button>
+    </nav>
+  }
+</main>
