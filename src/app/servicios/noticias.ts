@@ -16,7 +16,8 @@ export class ServicioNoticias {
   async cargarNoticias(): Promise<void> {
     const creadas = this.leer<Noticia[]>('noticiasCreadas', []);
     try {
-      const respuesta = await fetch('/data/noticias.json');
+      const direccionDatos = new URL('data/noticias.json', document.baseURI);
+      const respuesta = await fetch(direccionDatos);
       if (!respuesta.ok) throw new Error(`Error ${respuesta.status}`);
       const noticiasBase = (await respuesta.json()) as Noticia[];
       this.noticias.set([...creadas, ...noticiasBase].sort((a, b) => b.fecha.localeCompare(a.fecha)));
