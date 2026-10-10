@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "titulo": "La inteligencia artificial llega a las aulas",
+    "categoria": "Educación",
+    "fecha": "2026-09-14",
+    "autor": "Juan Esteban Murcia",
+    "imagen": "assets/images/educacion.jpg",
+    "resumen": "Nuevas herramientas personalizan el aprendizaje y apoyan el trabajo de los docentes.",
+    "contenido": "La inteligencia artificial está transformando la experiencia educativa. Las nuevas herramientas permiten adaptar ejercicios, ofrecer retroalimentación inmediata y acompañar el progreso de cada estudiante. El reto consiste en utilizarlas con criterio, proteger los datos y mantener al docente como guía del proceso.",
+    "destacada": true
+  },
+  {
+    "id": 2,
+    "titulo": "Ciudades inteligentes: datos al servicio de todos",
+    "categoria": "Innovación",
+    "fecha": "2026-09-12",
+    "autor": "Sebastian Mira Castro",
+    "imagen": "assets/images/ciudad.jpg",
+    "resumen": "La tecnología urbana ayuda a mejorar la movilidad, el ambiente y los servicios públicos.",
+    "contenido": "Las ciudades inteligentes conectan información de transporte, energía y atención ciudadana para tomar mejores decisiones. Los datos permiten anticipar problemas de movilidad y utilizar los recursos con mayor eficiencia, siempre que exista transparencia sobre su uso.",
+    "destacada": true
+  },
+  {
+    "id": 3,
+    "titulo": "Ciberseguridad: hábitos que protegen tus datos",
+    "categoria": "Tecnología",
+    "fecha": "2026-09-10",
+    "autor": "Karen Lorena Mora Correal",
+    "imagen": "assets/images/ciberseguridad.jpg",
+    "resumen": "Contraseñas únicas y verificación en dos pasos reducen riesgos en la vida digital.",
+    "contenido": "La seguridad digital comienza con decisiones cotidianas. Mantener los equipos actualizados, desconfiar de enlaces inesperados y activar la verificación en dos pasos disminuye la posibilidad de perder información personal.",
+    "destacada": true
+  },
+  {
+    "id": 4,
+    "titulo": "Robots colaborativos llegan a pequeñas empresas",
+    "categoria": "Tecnología",
+    "fecha": "2026-09-08",
+    "autor": "Ronald Arley Vega Contreras",
+    "imagen": "assets/images/robot.jpg",
+    "resumen": "Equipos compactos apoyan tareas repetitivas sin reemplazar la supervisión humana.",
+    "contenido": "Los robots colaborativos pueden trabajar cerca de las personas y asumir tareas repetitivas. Su adopción permite que los equipos humanos se concentren en actividades que requieren creatividad y criterio.",
+    "destacada": false
+  },
+  {
+    "id": 5,
+    "titulo": "Baterías que duran más y contaminan menos",
+    "categoria": "Innovación",
+    "fecha": "2026-09-06",
+    "autor": "Sofía Pérez",
+    "imagen": "assets/images/bateria.jpg",
+    "resumen": "Nuevos materiales buscan mejorar el almacenamiento de energía y facilitar el reciclaje.",
+    "contenido": "La investigación en baterías avanza hacia materiales más abundantes y ciclos de vida más largos. Estas mejoras pueden reducir residuos y apoyar la transición hacia sistemas de energía más limpios.",
+    "destacada": false
+  },
+  {
+    "id": 6,
+    "titulo": "La nube impulsa nuevos emprendimientos",
+    "categoria": "Tendencias",
+    "fecha": "2026-09-03",
+    "autor": "Andrés Gómez",
+    "imagen": "assets/images/nube.jpg",
+    "resumen": "Servicios digitales permiten iniciar proyectos con menos infraestructura propia.",
+    "contenido": "Las plataformas en la nube ofrecen almacenamiento, análisis y publicación sin grandes inversiones iniciales. Para los emprendimientos, esto facilita probar ideas y ajustar sus servicios a medida que crecen.",
+    "destacada": false
+  }
+]
